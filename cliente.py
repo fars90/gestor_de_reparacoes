@@ -19,7 +19,7 @@ def criar_tabela_clientes():
     conn.close()
 
 def adicionar_cliente():
-    print("\n🔹 Adicionar Cliente")
+    print("\nAdicionar Cliente")
     nome = input("Nome: ")
     telefone = input("Telefone: ")
     email = input("Email: ")

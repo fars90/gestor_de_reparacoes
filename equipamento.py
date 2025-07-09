@@ -6,7 +6,6 @@ def criar_tabela_equipamentos():
     if not conn:
         print("Não foi possível conectar à base de dados.")
         return
-
     cursor = conn.cursor()
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS equipamentos (
@@ -25,7 +24,7 @@ def criar_tabela_equipamentos():
     conn.close()
 
 def adicionar_equipamento():
-    print("\n🔹 Adicionar Equipamento")
+    print("\nAdicionar Equipamento")
     listar_clientes()
     try:
         cliente_id = int(input("ID do cliente: "))
@@ -33,17 +32,24 @@ def adicionar_equipamento():
         print("ID inválido.")
         return
 
+    conn = ligar_bd()
+    if not conn:
+        print("Não foi possível conectar à base de dados.")
+        return
+
+    cursor = conn.cursor()
+    cursor.execute("SELECT COUNT(*) FROM clientes WHERE id = %s", (cliente_id,))
+    (count,) = cursor.fetchone()
+    if count == 0:
+        print(f"Cliente com ID {cliente_id} não encontrado.")
+        conn.close()
+        return
+
     tipo = input("Tipo de equipamento: ")
     marca = input("Marca: ")
     modelo = input("Modelo: ")
     descricao = input("Descrição do problema: ")
 
-    conn = ligar_bd()
-    if not conn:
-        print("Não foi possível adicionar o equipamento.")
-        return
-
-    cursor = conn.cursor()
     sql = """
         INSERT INTO equipamentos 
         (cliente_id, tipo, marca, modelo, descricao_problema) 

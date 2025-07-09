@@ -82,3 +82,35 @@ def listar_equipamentos():
     else:
         print("Nenhum equipamento encontrado.")
     conn.close()
+
+def atualizar_estado_equipamento():
+    listar_equipamentos()
+    print("\nAtualizar Estado de Equipamento")
+    try:
+        equipamento_id = int(input("ID do equipamento: "))
+    except ValueError:
+        print("ID inválido.")
+        return
+
+    conn = ligar_bd()
+    if not conn:
+        print("Não foi possível conectar à base de dados.")
+        return
+
+    cursor = conn.cursor()
+    cursor.execute("SELECT estado FROM equipamentos WHERE id = %s", (equipamento_id,))
+    resultado = cursor.fetchone()
+    if not resultado:
+        print(f"Equipamento com ID {equipamento_id} não encontrado.")
+        conn.close()
+        return
+
+    estado_atual = resultado[0]
+    print(f"Estado atual: {estado_atual}")
+    novo_estado = input("Novo estado (Recebido / Em reparação / Pronto / Entregue): ").strip()
+
+    sql = "UPDATE equipamentos SET estado = %s WHERE id = %s"
+    cursor.execute(sql, (novo_estado, equipamento_id))
+    conn.commit()
+    conn.close()
+    print(f"Estado do equipamento {equipamento_id} atualizado para '{novo_estado}'.")

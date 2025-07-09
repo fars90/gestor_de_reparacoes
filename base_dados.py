@@ -8,7 +8,6 @@ def criar_base_dados(cursor):
 
 def ligar_bd():
     try:
-        # Conexão inicial (sem base de dados)
         conn = mysql.connector.connect(
             host="localhost",
             user="root",
@@ -19,7 +18,6 @@ def ligar_bd():
         cursor.close()
         conn.close()
 
-        # Conexão com a base de dados
         conn = mysql.connector.connect(
             host="localhost",
             user="root",

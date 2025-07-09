@@ -13,7 +13,7 @@ Permite o registo de clientes, equipamentos, gestão de estados de reparações,
 - Consultas e histórico por cliente ou estado
 - Login para técnicos (controlo de acesso)
 - Exportação de relatórios em ficheiro
-- Armazenamento de dados persistente (SQLite ou JSON)
+- Armazenamento de dados persistente (MySQL ou JSON)
 
 ---
 

@@ -1,11 +1,15 @@
 from cliente import criar_tabela_clientes, adicionar_cliente, listar_clientes
+from equipamento import criar_tabela_equipamentos, adicionar_equipamento, listar_equipamentos
 
 def menu():
     criar_tabela_clientes()
+    criar_tabela_equipamentos()
     while True:
         print("\nMENU CLIENTES")
         print("1 - Adicionar cliente")
         print("2 - Listar clientes")
+        print("3 - Adicionar Equipamento")
+        print("4 - Listar Equipamentos")
         print("0 - Sair")
         opcao = input("Escolha: ")
 
@@ -13,6 +17,10 @@ def menu():
             adicionar_cliente()
         elif opcao == "2":
             listar_clientes()
+        elif opcao == "3":
+            adicionar_equipamento()
+        elif opcao == "4":
+            listar_equipamentos()
         elif opcao == "0":
             print("A sair do programa.")
             break

@@ -26,7 +26,6 @@ def criar_tabela_equipamentos():
 
 def adicionar_equipamento():
     print("\n🔹 Adicionar Equipamento")
-    # Mostrar clientes para escolher
     listar_clientes()
     try:
         cliente_id = int(input("ID do cliente: "))

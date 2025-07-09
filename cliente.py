@@ -47,7 +47,7 @@ def listar_clientes():
     cursor.execute("SELECT * FROM clientes")
     resultados = cursor.fetchall()
     if resultados:
-        print("\n📄 Lista de Clientes:")
+        print("\nLista de Clientes:")
         for (id, nome, telefone, email) in resultados:
             print(f"[{id}] {nome} | Tel: {telefone} | Email: {email}")
     else:

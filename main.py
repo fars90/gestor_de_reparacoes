@@ -10,10 +10,7 @@ def menu():
         opcao = input("Escolha: ")
 
         if opcao == "1":
-            nome = input("Nome: ")
-            telefone = input("Telefone: ")
-            email = input("Email: ")
-            adicionar_cliente(nome, telefone, email)
+            adicionar_cliente()
         elif opcao == "2":
             listar_clientes()
         elif opcao == "0":
